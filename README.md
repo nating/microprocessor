@@ -9,7 +9,7 @@ This project is a many VHDL components put together to make a microcoded instruc
 ## Design
 This microprocessor runs programs made up of instructions in memory.
 
-
+### Instructions
 
 This microprocessor's instruction set includes the following operations:
 
@@ -48,3 +48,8 @@ Once the processor is started up, the _Program Counter_ points to the first addr
 Here is a screenshot of the code for memory. Each memory location holds an instruction of the Trivial Program. The comments show the index in memory, the assembly code, the pseudo code and the instruction in bits:
   
 <img src="https://github.com/nating/microprocessor/blob/master/Images/Trivial-Program.png">  
+
+### Testing
+There are testbenches for each component to make sure larger components were built with strong foundations of smaller components that worked for every edge case.  
+  The main testbench for the processor itself just has a clock and a reset signal. The reset signal clears all the registers and sets the CAR and Program Counter to zero. Once these are initialised, the processor runs itself through the instructions that have been hardcoded in memory for the trivial program.  
+  To see careful stepping through of each instruction/micro-operation for the program in the testbench, please see the <a href="https://github.com/nating/microprocessor/blob/master/ProgramDemonstration.pages">Program Demonstration<a>.
