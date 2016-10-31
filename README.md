@@ -72,7 +72,7 @@ Each of these fields represent signals sent out to different components in the p
 
 Each micro-operation for the instruction set has its own values for these fields to make sure that the components around the processor behave in the correct manner. The value for each micro-operation is described in this Screenshot of a comment at the top of the code for Control Memory:
 
-<img src="https://github.com/nating/microprocessor/blob/master/Images/Micro-operations.png" width="600">
+<img src="https://github.com/nating/microprocessor/blob/master/Images/Micro-operations.png">
 
 
 
