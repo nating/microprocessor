@@ -70,6 +70,12 @@ Each of these fields represent signals sent out to different components in the p
 * **Mux M select**: Signals that the program counter should index memory instead of the value in source register A.
 * **Memory Write**: Signals that the input value to memory should overwrite the indexed memory address' value.
 
+Each micro-operation for the instruction set has its own values for these fields to make sure that the components around the processor behave in the correct manner. The value for each micro-operation is described in this Screenshot of a comment at the top of the code for Control Memory:
+
+<img src="https://github.com/nating/microprocessor/blob/master/Images/Control-Memory.png" width="600">
+
+
+
 ### Testing
 There are testbenches for each component to make sure larger components were built with strong foundations of smaller components that worked for every edge case.  
   The main testbench for the processor itself just has a clock and a reset signal. The reset signal clears all the registers and sets the CAR and Program Counter to zero. Once these are initialised, the processor runs itself through the instructions that have been hardcoded in memory for the trivial program.  
