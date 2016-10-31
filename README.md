@@ -45,4 +45,6 @@ For example, an ADD instruction indexes the ADD micro-operation in control memor
 Once the processor is started up, the _Program Counter_ points to the first address in memory. This is the first instruction of our program.  
   To demonstrate the capabilities of the processor, the memory holds a trivial program that performs all of the instructions in the instruction set. 
   
-<img src="https://github.com/nating/microprocessor/blob/master/Images/Trivial-Program.png" width="400">  
+Here is a screenshot of the code for memory. Each memory location holds an instruction of the Trivial Program. The comments show the index in memory, the assembly code, the pseudo code and the instruction in bits:
+  
+<img src="https://github.com/nating/microprocessor/blob/master/Images/Trivial-Program.png">  
