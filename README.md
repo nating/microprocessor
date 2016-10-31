@@ -10,9 +10,7 @@ This project is a many VHDL components put together to make a microcoded instruc
 This microprocessor runs programs made up of instructions in memory.
 
 ### Instructions
-
 This microprocessor's instruction set includes the following operations:
-
 
 Abbreviation    | Instruction
 ----------------|---------------------------------------------------------------------------------------------
@@ -48,6 +46,9 @@ Once the processor is started up, the _Program Counter_ points to the first addr
 Here is a screenshot of the code for memory. Each memory location holds an instruction of the Trivial Program. The comments show the index in memory, the assembly code, the pseudo code and the instruction in bits:
   
 <img src="https://github.com/nating/microprocessor/blob/master/Images/Trivial-Program.png">  
+
+### Control Memory
+Control memory has all of the micro-operations for each instruction. Micro-operations are more complicated than their corresponding instructions.
 
 ### Testing
 There are testbenches for each component to make sure larger components were built with strong foundations of smaller components that worked for every edge case.  
