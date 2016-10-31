@@ -13,7 +13,7 @@ This microprocessor's instruction set includes the following operations:
 
 
 Abbreviation    | Instruction
-----------------|------------------------------------------------------------------
+----------------|---------------------------------------------------------------------------------------------
 **ADI**         |  Add immediate constant
 **LD**          |   Load to value from memory
 **ST**          |   Store a value in memory
