@@ -1,2 +1,31 @@
 # microprocessor
 A Microcoded Instruction Set Processor written in VHDL.
+
+## Introduction
+This project is a many VHDL components put together to make a microcoded instruction set processor in which programs can be written to memory to be ran by the processor.
+
+## Design
+This microprocessor runs programs made up of instructions in memory.
+
+This microprocessor's instruction set includes the following operations:
+* ADI - Add immediate constant
+* LD  - Load to value from memory
+* ST  - Store a value in memory
+* INC - Increment
+* NOT - NOT
+* ADD - Add
+* LDR - Load into immediate register (the same as points to memory)
+* SR  - Shift Right
+* BEQ - Branch if equal
+* BNZ - Branch if not zero
+
+Each of these instructions has one or more _micro-operations_ in _Control Memory_ to be to tell the components of the processor what to do when the instructions are being performed.  
+  LDR and SR make use of the _temporary register_, Register 8. And take more than one micro-operation to execute. These, as well as the branching operations can take more than one clock-cycle to be performed.  
+  
+  An instruction in memory has:
+    * An Opcode
+    * A Destination Register
+    * Two source Registers
+
+The _opcode_ of an instruction is the address in Control Memory of the first micro-operation for that instruction. The opcode is put into the _Control Address Register_, which indexes the micro-operation. The opcode is 7 bits long. The registers (DR,SA & SB) specified in the instruction are 3 bits each and index the _Register File_. There are 15 register.
+  
