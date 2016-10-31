@@ -33,7 +33,7 @@ Each of these instructions has one or more _micro-operations_ in _Control Memory
 An instruction in memory has:
 
 Opcode    | Destination Register | Source Register A | Source Register B
-----------|---------------------------------------------------------------------------------------------
+----------|----------------------|-------------------|--------------------------------------------------
  7 bits   | 3 bits               | 3 bits            | 3 bits
 
 The _opcode_ of an instruction is the address in Control Memory of the first micro-operation for that instruction. The opcode is put into the _Control Address Register_, which indexes the micro-operation. The opcode is 7 bits long. The registers (DR,SA & SB) specified in the instruction are 3 bits each and index the _Register File_. There are 8 registers in the Register File. Registers 0 through 7 can be specified as the source or destination registers for instructions, whereas register 8 is used for certain less straight forward instructions that need the use of another.
