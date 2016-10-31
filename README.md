@@ -48,7 +48,7 @@ Here is a screenshot of the code for memory. Each memory location holds an instr
 <img src="https://github.com/nating/microprocessor/blob/master/Images/Trivial-Program.png">  
 
 ### Control Memory
-Control memory has all of the micro-operations for each instruction. Micro-operations are more complicated than their corresponding instructions. Micro-operations are 20 bits long. They have 16 different fields:
+Control memory is 256x28 bits. It has all of the micro-operations for each instruction. Micro-operations are more complicated than their corresponding instructions. Micro-operations are 28 bits long. They have 16 different fields:
 
 Next Address| MS	 | MC  | IL  | PI  | PL  | TD  | TA  | TB  | MB  | FS   | MD  | RW  | MM  | MW
 ------------|------|-----|-----|-----|-----|-----|-----|-----|-----|------|-----|-----|-----|---------------
@@ -74,9 +74,37 @@ Each micro-operation for the instruction set has its own values for these fields
 
 <img src="https://github.com/nating/microprocessor/blob/master/Images/Micro-operations.png">
 
+### Components
+There are 29 components that make up the microcoded processor. Here are some details of the more important/larger components, that we have not yet discussed:
 
+#### Microprogrammed Control
+The _Microprogrammed control_ takes care of the signalling that gets sent around the processor. It is really just for grouping similar components together to make the running of the processor more simple to understand. The components in the microprogrammed control are the CAR, the PC, control memory and the IR.
 
-### Testing
+#### Datapath
+The _Datapath_ groups together components that deal with the registers and the manipulation of the values in them. The register file and the functional unit are members of the datapath.
+
+#### Zero fill
+The zero fill is a component in the datapath that is used to extend the bits in source register B so that it's 3 bits can become an equivalent 8 bit value to be used as an immediate value in the Functional unit.
+
+#### Control Address Register
+The _CAR_ indexes control memory so that the right micro-operation is active. On a clock tick, if the condition specified is met then a signal comes from MUX S indicating that the CAR's value should increment by one. If there is no signal from MUX S, then the value from MUX C is loaded into the CAR. The value in MUX C will be the _next address_ of the current micro-operation or the opcode of the next instruction from the Instruction Register.
+
+#### Instruction Register
+The _IR_ holds the current instruction and sends signals out to the CAR and the Register file specifying an operation and registers for the instruction. On a clock tick, its value will be overwritten by the output of memory if the _Instruction Load_ signal is set.
+
+#### Program Counter
+The _PC_ holds the index in memory of the current instruction in the program. When the _Mux M select_ signal is set, memory outputs the value at this index. If _Program counter Increment_ is set on a clock tick, the index increases by one. If _Program counter Load_ is set, then the value from _Extend_ is added to the index. Extend holds a 6 bit value that is made up of the 3 bits from source register A and the 3 bits from source register B. This is how branching occurs, and the offset can be negative or positive. The program counter can only branch to instructions 2<sup>5</sup> places up or down from its current position in memory.
+
+#### Register File
+The register file has 8 registers. It outputs two 16bit values, which come from registers indexed by the _source register A_ signal and _source register B_ signal. If the _temporary source A/B_ signals are set, then the value in register 8 is output instead of the values in the register indexed by the _source register A/B_ signals. There is a 16bit input signal to the register file. This signal overwrites the value in a register if the _Read/Write_ signal is set. The register overwritten is indexed by the _destination register_ signal, or register 8 if the _temporary destination_ signal is set.
+
+#### Functional unit
+The functional unit does the manipulation of values in registers. It houses the Arithmetic Logic Unit and a Barrel shifter. Two 16 bit values are input to the functional unit, and it outputs one 16 bit result value. The functional unit also outputs four condition signals that are set depending on the calculation that was performed. Depending on the _function select_ signal, a certain operation is performed in the ALU or barrel shifter and then output as the result.  
+  The barrel shifter component, is not used as a barrel shifter but rather shifts are calculated in multiple micro-operations as I felt this was more complex and demonstrated a better understanding of the flow of the data in the processor when I was working on this project. So signals sent to the barrel shifter only ever get it to shift one to the right on any given clock cycle. I decided to implement this single bit shifting with a barrel shifter to also demonstrate my understanding of more complex components.
+  
+#### 
+
+## Testing
 There are testbenches for each component to make sure larger components were built with strong foundations of smaller components that worked for every edge case.  
   The main testbench for the processor itself just has a clock and a reset signal. The reset signal clears all the registers and sets the CAR and Program Counter to zero. Once these are initialised, the processor runs itself through the instructions that have been hardcoded in memory for the trivial program.  
   To see careful stepping through of each instruction/micro-operation for the program in the testbench, please see the <a href="https://github.com/nating/microprocessor/blob/master/ProgramDemonstration.pages">Program Demonstration<a>.
