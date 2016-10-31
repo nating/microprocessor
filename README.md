@@ -1,7 +1,7 @@
 # microprocessor
 A Microcoded Instruction Set Processor written in VHDL.
 
-![Full-Processor-Schematic](Images/Full-Processor-Schematic.png)
+![Full-Processor-Schematic](Images/Full-Processor-Schematic.png | width=100)
 
 ## Introduction
 This project is a many VHDL components put together to make a microcoded instruction set processor in which programs can be written to memory to be ran by the processor.
