@@ -1,8 +1,7 @@
 # microprocessor
 A Microcoded Instruction Set Processor written in VHDL.
 
-![Full-Processor-Schematic](Images/Full-Processor-Schematic.png =100x100)
-<img src="https://github.com/nating/microprocessor/blob/master/Images/Full-Processor-Schematic.png" width="48">
+<img src="https://github.com/nating/microprocessor/blob/master/Images/Full-Processor-Schematic.png" width="100">
 
 ## Introduction
 This project is a many VHDL components put together to make a microcoded instruction set processor in which programs can be written to memory to be ran by the processor.
