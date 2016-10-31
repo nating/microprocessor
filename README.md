@@ -50,9 +50,9 @@ Here is a screenshot of the code for memory. Each memory location holds an instr
 ### Control Memory
 Control memory has all of the micro-operations for each instruction. Micro-operations are more complicated than their corresponding instructions. Micro-operations are 28 bits long. They have 16 different fields:
 
-Address	| Next Address | MS	  | MC  | IL  | PI  | PL  | TD  | TA  | TB  | MB  | FS   | MD  | RW  | MM  | MW
---------|--------------|------|-----|-----|-----|-----|-----|-----|-----|-----|------|-----|-----|-----|---------------
- 8 bits | 8 bits       |3 bits|1 bit|1 bit|1 bit|1 bit|1 bit|1 bit|1 bit|1 bit|5 bits|1 bit|1 bit|1 bit|1 bit  
+Address|Next Address| MS	 | MC  | IL  | PI  | PL  | TD  | TA  | TB  | MB  | FS   | MD  | RW  | MM  | MW
+-------|------------|------|-----|-----|-----|-----|-----|-----|-----|-----|------|-----|-----|-----|---------------
+8 bits |8 bits      |3 bits|1 bit|1 bit|1 bit|1 bit|1 bit|1 bit|1 bit|1 bit|5 bits|1 bit|1 bit|1 bit|1 bit  
 
 ### Testing
 There are testbenches for each component to make sure larger components were built with strong foundations of smaller components that worked for every edge case.  
