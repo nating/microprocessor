@@ -102,7 +102,11 @@ The register file has 8 registers. It outputs two 16bit values, which come from 
 The functional unit does the manipulation of values in registers. It houses the Arithmetic Logic Unit and a Barrel shifter. Two 16 bit values are input to the functional unit, and it outputs one 16 bit result value. The functional unit also outputs four condition signals that are set depending on the calculation that was performed. Depending on the _function select_ signal, a certain operation is performed in the ALU or barrel shifter and then output as the result.  
   The barrel shifter component, is not used as a barrel shifter but rather shifts are calculated in multiple micro-operations as I felt this was more complex and demonstrated a better understanding of the flow of the data in the processor when I was working on this project. So signals sent to the barrel shifter only ever get it to shift one to the right on any given clock cycle. I decided to implement this single bit shifting with a barrel shifter to also demonstrate my understanding of more complex components.
   
-#### 
+#### Arithmetic Logic Unit
+The ALU takes care of logical operations with the Logical Circuit and care of the arithmetic operations with the Arithmetic Circuit. The logic circuit takes the _function select_ signal and outputs the input having performed whatever logical operation was specified on it. The Arithmetic Circuit has a carry-lookahead-adder that can implement with the help of clever _'b_to_y'_ logic whatever arithmetic function is specified be the _function select_ signal. The _function select_ signal will specify which of these components' outputs are used as the output for the ALU.
+
+#### Multiplexers and Decoders
+There are many different _"MUX"s_ and decoders used throughout the processor as well. The most important are MUX B, C, D, M & S which we have mentioned when discussing the fields in the micro-operations.
 
 ## Testing
 There are testbenches for each component to make sure larger components were built with strong foundations of smaller components that worked for every edge case.  
