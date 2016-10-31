@@ -7,17 +7,23 @@ This project is a many VHDL components put together to make a microcoded instruc
 ## Design
 This microprocessor runs programs made up of instructions in memory.
 
+
+
 This microprocessor's instruction set includes the following operations:
-* ADI   -   Add immediate constant
-* LD    -   Load to value from memory
-* ST    -   Store a value in memory
-* INC   -   Increment
-* NOT   -   NOT
-* ADD   -   Add
-* LDR   -   Load into immediate register (the same as points to memory)
-* SR    -   Shift Right
-* BEQ   -   Branch if equal
-* BNZ   -   Branch if not zero
+
+
+Abbreviation    | Instruction
+----------------|------------------------------------------------------------------
+**ADI**         |  Add immediate constant
+**LD**          |   Load to value from memory
+**ST**          |   Store a value in memory
+**INC**         |   Increment
+**NOT**         |   NOT
+**ADD**         |   Add
+**LDR**         |   Load into immediate register (the same as points to memory)
+**SR**          |   Shift Right
+**BEQ**         |   Branch if equal
+**BNZ**         |   Branch if not zero
 
 Each of these instructions has one or more _micro-operations_ in _Control Memory_ to be to tell the components of the processor what to do when the instructions are being performed.  
   LDR and SR make use of the _temporary register_, Register 8. And take more than one micro-operation to execute. These, as well as the branching operations can take more than one clock-cycle to be performed.  
