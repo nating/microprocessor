@@ -4,7 +4,7 @@ A Microcoded Instruction Set Processor written in VHDL.
 <img src="https://github.com/nating/microprocessor/blob/master/Images/Full-Processor-Schematic.png" width="600">
 
 ## Introduction
-This project is a many VHDL components put together to make a microcoded instruction set processor in which programs can be written to memory to be ran by the processor.
+This project is a many VHDL components put together to make a microcoded instruction set processor in which programs can be written to memory for the processor to run.
 
 ## Design
 This microprocessor runs programs made up of instructions in memory.
