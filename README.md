@@ -48,11 +48,19 @@ Here is a screenshot of the code for memory. Each memory location holds an instr
 <img src="https://github.com/nating/microprocessor/blob/master/Images/Trivial-Program.png">  
 
 ### Control Memory
-Control memory has all of the micro-operations for each instruction. Micro-operations are more complicated than their corresponding instructions. Micro-operations are 28 bits long. They have 16 different fields:
+Control memory has all of the micro-operations for each instruction. Micro-operations are more complicated than their corresponding instructions. Micro-operations are 20 bits long. They have 16 different fields:
 
-Addr  |Next Addr| MS	 | MC  | IL  | PI  | PL  | TD  | TA  | TB  | MB  | FS   | MD  | RW  | MM  | MW
-------|---------|------|-----|-----|-----|-----|-----|-----|-----|-----|------|-----|-----|-----|---------------
-8 bits|8 bits   |3 bits|1 bit|1 bit|1 bit|1 bit|1 bit|1 bit|1 bit|1 bit|5 bits|1 bit|1 bit|1 bit|1 bit  
+Next Address| MS	 | MC  | IL  | PI  | PL  | TD  | TA  | TB  | MB  | FS   | MD  | RW  | MM  | MW
+------------|------|-----|-----|-----|-----|-----|-----|-----|-----|------|-----|-----|-----|---------------
+8 bits      |3 bits|1 bit|1 bit|1 bit|1 bit|1 bit|1 bit|1 bit|1 bit|5 bits|1 bit|1 bit|1 bit|1 bit  
+
+Each of these fields represent signals sent out to different components in the processor when executing the micro-operation.
+* **Next Address**: The address of the next micro-operation in control memory (Usually _Instruction Fetch_).
+* **Mux S select**: Used for changing the condition for the CAR to be incremented rather than loaded with the _Next Address_. This is used for micro-operations with multiple operations.
+* **Mux C select**: Signalling whether the CAR should be loaded with the next instructions opcode on the next clock tick.
+* **Instruction Load**: Signals that the Instruction Register should load the next instruction on the next clock tick.
+* **Program Counter Increment**: Signals that the program counter's value should increase by one.
+* **Program Counter Load**: Signals that the program counter should load a value from memory
 
 ### Testing
 There are testbenches for each component to make sure larger components were built with strong foundations of smaller components that worked for every edge case.  
