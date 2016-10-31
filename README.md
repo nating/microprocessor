@@ -59,8 +59,16 @@ Each of these fields represent signals sent out to different components in the p
 * **Mux S select**: Used for changing the condition for the CAR to be incremented rather than loaded with the _Next Address_. This is used for micro-operations with multiple operations.
 * **Mux C select**: Signalling whether the CAR should be loaded with the next instructions opcode on the next clock tick.
 * **Instruction Load**: Signals that the Instruction Register should load the next instruction on the next clock tick.
-* **Program Counter Increment**: Signals that the program counter's value should increase by one.
-* **Program Counter Load**: Signals that the program counter should load a value from memory
+* **Program counter Increment**: Signals that the program counter's value should increase by one.
+* **Program counter Load**: Signals that the program counter should be offset by the immediate value in the source registers.
+* **Temporary Destination**: Signals that the destination register for the micro-operation should be register 8.
+* **Temporary source A/B**: Signals that the source register A/B for the micro-operation should be register 8.
+* **Mux B select**: Signals that the immediate value in Source Register B should be used as input to the functional unit instead of the value from the register file.
+* **Function Select**: Selects which function should be performed by the functional unit.
+* **Mux D select**: Selects that a the memory's output should be placed in the destination register rather than the output of the functional unit.
+* **Read/Write**: Signals that the input value for the register file should overwrite the value in the destination register.
+* **Mux M select**: Signals that the program counter should index memory instead of the value in source register A.
+* **Memory Write**: Signals that the input value to memory should overwrite the indexed memory address' value.
 
 ### Testing
 There are testbenches for each component to make sure larger components were built with strong foundations of smaller components that worked for every edge case.  
